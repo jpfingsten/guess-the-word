@@ -39,20 +39,23 @@ const validateInput = function (input) {
         message.innerText = "Please guess a letter.";
     } else if (input.length >= 2) {
         message.innerText = "One letter at a time!";
+        input = "";
     } else if (!input.match(acceptedLetter)) {
         message.innerText = "Letters only, please!";
-    }
+        input = "";
+    };
 
     return input;
 }
 
 //capture input
 const makeGuess = function (letter) {
-    letter.toUpperCase();
-    if (guessedLetters.includes(letter) === true) {
+    const thisLetter = letter;
+    const upperCaseLetter = thisLetter.toUpperCase();
+    if (guessedLetters.includes(upperCaseLetter)) {
         message.innerText = "You've already guessed that letter. Try again!";
     } else {
-        guessedLetters.push(letter);
+        guessedLetters.push(upperCaseLetter);
     }
     console.log(guessedLetters);
 }
