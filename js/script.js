@@ -23,11 +23,13 @@ wordThisRound(word);
 //accepting text input, clearing textInput after guess
 guessButton.addEventListener("click", function (e) {
     e.preventDefault();
-    const guessedLetter = textInput.value;
+    const playerGuess = textInput.value;
     textInput.value = "";
     message.innerText = "";
-    const validatedGuess = validateInput(guessedLetter); //is this "the variable mapped to the result of the function?"
-    makeGuess(validatedGuess);
+    const validatedGuess = validateInput(playerGuess);
+    if (validatedGuess) {
+        makeGuess(validatedGuess);
+    }
 })
 
 //validate player's input
