@@ -56,6 +56,33 @@ const makeGuess = function (letter) {
         message.innerText = "You've already guessed that letter. Try again!";
     } else {
         guessedLetters.push(upperCaseLetter);
+        updateGuessedList();
     }
     console.log(guessedLetters);
+}
+
+//show the guessed letters
+const updateGuessedList = function () {
+    guessedList.innerHTML = "";
+    for (let letter of guessedLetters) {
+        const li = document.createElement("li");
+        li.innerText = `${letter}`;
+        guessedList.append(li);
+    }
+}
+
+//update circle symbols with correctly guessed letters, NOT COMPLETE
+const updateWord = function (guessedLetters) {
+    const wordUpper = word.toUpperCase();
+    const wordArray = wordUpper.split("");
+    const guessedLettersArray = [];
+    for (let letter of wordArray) { //start from here on next attempt
+        if (guessedLetters.includes(letter)) {
+            guessedLettersArray.append(`${letter}`)
+        } else {
+            guessedLettersArray.append("●")
+        };
+    };
+    const newGuessedList = guessedLettersArray.join();
+    wordInProgress.innerText = newGuessedList;
 }
