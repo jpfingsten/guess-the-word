@@ -117,7 +117,7 @@ const guessCount = function (guess) {
     }
     if (remainingGuesses === 0) {
         message.innerText = `Game over! The word was ${wordUpper}.`;
-        remainingGuessesSpan.innerText = "0 guesses";
+        startOver();
     } else if (remainingGuesses === 1) {
         remainingGuessesSpan.innerText = "1 guess";
     } else if (remainingGuesses > 1) {
@@ -130,5 +130,14 @@ const checkIfWin = function () {
     if (wordInProgress.innerText === word.toUpperCase()) {
         message.classList.add("win");
         message.innerHTML = `<p class="highlight">You guessed the correct word. Congrats!</p>`;
+        startOver();
     };
+}
+
+//start over after win or loss
+const startOver = function () {
+    guessLetterButton.classList.add("hide");
+    remainingGuessesElement.classList.add("hide");
+    guessedLettersElement.classList.add("hide");
+    playAgainButton.classList.remove("hide");
 }
