@@ -9,7 +9,7 @@ const message = document.querySelector(".message"); //paragraph where messages a
 const playAgainButton = document.querySelector(".play-again"); //button prompting player to play again
 
 let word = "magnolia"
-const guessedLetters = [];
+let guessedLetters = [];
 
 let remainingGuesses = 8;
 
@@ -141,3 +141,18 @@ const startOver = function () {
     guessedLettersElement.classList.add("hide");
     playAgainButton.classList.remove("hide");
 }
+
+//click event listener for Play Again button
+playAgainButton.addEventListener("click", function () {
+    message.classList.remove("win");
+    message.innerText = "";
+    guessedLettersElement.innerText = "";
+    remainingGuesses = 8;
+    guessedLetters = [];
+    remainingGuessesSpan.innerText = "8 guesses";
+    guessLetterButton.classList.remove("hide");
+    remainingGuessesElement.classList.remove("hide");
+    guessedLettersElement.classList.remove("hide");
+    playAgainButton.classList.add("hide");
+    getWord();
+});
